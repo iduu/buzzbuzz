@@ -3,3 +3,10 @@
 
 en:
   hello: "Hello world"
+
+en:
+  activerecord:
+    attributes:
+      user:  
+        login: "Username or email"
+        about: "Describe yourself"
