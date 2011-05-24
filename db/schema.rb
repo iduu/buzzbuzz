@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(:version => 20110524052139) do
 
   create_table "items", :force => true do |t|
-    t.integer  "author_id",                 :null => false
+    t.integer  "author_id"
     t.integer  "parent_id"
     t.string   "type"
     t.string   "url"

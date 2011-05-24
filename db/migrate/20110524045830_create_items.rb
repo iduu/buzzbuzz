@@ -1,7 +1,7 @@
 class CreateItems < ActiveRecord::Migration
   def self.up
     create_table :items do |t|
-      t.references :author, :null => false
+      t.references :author
       t.references :parent
       t.string :type
       
