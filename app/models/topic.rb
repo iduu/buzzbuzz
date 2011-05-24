@@ -1,0 +1,2 @@
+class Topic < Item
+end

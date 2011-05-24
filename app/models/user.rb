@@ -4,6 +4,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  #relation
+  has_many :submits, :class_name => 'Item', :foreign_key => 'author_id'
+  
+  has_many :votes
+  has_many :voted_items, :through => :votes, :source => :item
+  
   # Setup accessible (or protected) attributes for your model
   attr_accessible :login, :username, :email, :password, :password_confirmation, :remember_me, :about
   attr_accessor :login
