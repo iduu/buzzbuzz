@@ -4,7 +4,7 @@ class CreateVotes < ActiveRecord::Migration
       t.references :user, :null => false
       t.references :item, :null => false
       
-      t.integer :vote
+      t.integer :vote, :default => 0
     end
   end
 

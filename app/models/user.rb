@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  #relation
+  # relation
   has_many :submits, :class_name => 'Item', :foreign_key => 'author_id'
   
   has_many :votes

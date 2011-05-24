@@ -9,7 +9,7 @@ class CreateItems < ActiveRecord::Migration
       t.string :title #for topic
       
       t.text :text
-      t.integer :score
+      t.integer :score, :default => 0
       
       t.timestamps
     end

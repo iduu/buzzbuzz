@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20110524052139) do
     t.string   "url"
     t.string   "title"
     t.text     "text"
-    t.integer  "score"
+    t.integer  "score",      :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -39,16 +39,16 @@ ActiveRecord::Schema.define(:version => 20110524052139) do
     t.datetime "updated_at"
     t.string   "username"
     t.text     "about"
-    t.integer  "score"
+    t.integer  "score",                                 :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "votes", :force => true do |t|
-    t.integer "user_id", :null => false
-    t.integer "item_id", :null => false
-    t.integer "vote"
+    t.integer "user_id",                :null => false
+    t.integer "item_id",                :null => false
+    t.integer "vote",    :default => 0
   end
 
 end
