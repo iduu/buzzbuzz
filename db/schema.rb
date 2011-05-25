@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(:version => 20110524052139) do
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "votes", :force => true do |t|
-    t.integer "user_id",                :null => false
-    t.integer "item_id",                :null => false
+    t.integer "user_id"
+    t.integer "item_id"
     t.integer "vote",    :default => 0
   end
 
