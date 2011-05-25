@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20110524052139) do
     t.datetime "updated_at"
     t.string   "username"
     t.text     "about"
-    t.integer  "score",                                 :default => 0
+    t.integer  "score",                                 :default => 1
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

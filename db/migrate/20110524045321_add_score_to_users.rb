@@ -1,6 +1,6 @@
 class AddScoreToUsers < ActiveRecord::Migration
   def self.up
-    add_column :users, :score, :integer, :default => 0
+    add_column :users, :score, :integer, :default => 1
   end
 
   def self.down

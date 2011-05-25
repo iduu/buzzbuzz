@@ -27,4 +27,25 @@ class ItemTest < ActiveSupport::TestCase
     assert !c.errors[:title].any?
     assert !c.errors[:url].any?
   end
+  
+  test "User's author-item relation" do
+    u = Factory(:user)
+    t = Factory(:topic, :author => u)
+    c = Factory(:comment, :author => u, :parent => t)
+    
+    assert_not_nil u.submits.index(t) # must exist in author's submits
+    assert_equal u, t.author # author must be user
+    
+    assert_not_nil u.submits.index(c)
+    assert_equal u, c.author
+  end
+  
+  test "Item's parent-child relation" do
+    u = Factory(:user)
+    t = Factory(:topic, :author => u)
+    c = Factory(:comment, :author => u, :parent => t)
+
+    assert_not_nil t.children.index(c)
+    assert_equal c.parent, t
+  end
 end
