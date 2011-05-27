@@ -45,10 +45,8 @@ module Buzzbuzz
     config.generators do |g|
       g.stylesheets false
       g.test_framework :shoulda
+      g.fallbacks[:shoulda] = :test_unit
       g.fixture_replacement :factory_girl
     end
-    # ...
-    require 'rails/generators'
-    Rails::Generators.fallbacks[:shoulda] = :test_unit
   end
 end
