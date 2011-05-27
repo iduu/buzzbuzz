@@ -41,5 +41,14 @@ module Buzzbuzz
     
     # Set for email host
     config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+    
+    config.generators do |g|
+      g.stylesheets false
+      g.test_framework :shoulda
+      g.fixture_replacement :factory_girl
+    end
+    # ...
+    require 'rails/generators'
+    Rails::Generators.fallbacks[:shoulda] = :test_unit
   end
 end

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ItemTest < ActiveSupport::TestCase
   # Replace this with your real tests.
-  test "Test item validation" do
+  should "Test item validation" do
     i = Item.new
     assert i.invalid?
     
