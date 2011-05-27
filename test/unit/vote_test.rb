@@ -1,8 +1,7 @@
 require 'test_helper'
 
 class VoteTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "Test vote validation" do
+  should "Test vote validation" do
     v = Vote.new
     assert v.invalid?
     
@@ -11,72 +10,80 @@ class VoteTest < ActiveSupport::TestCase
     assert !v.errors[:score].any?
   end
   
-  test "Test vote" do
-    voter = Factory(:user)
-    t = Factory(:topic_with_author)
-    
-    assert_equal 1, voter.score
-    assert_equal 1, t.author.score
-    assert_equal 0, t.score
-    
-    assert_nothing_raised do
-      Vote.make(voter, t, 1)
+  context "A vote" do
+    setup do
+      @voter = Factory(:user)
+      @topic = Factory(:topic_with_author)
+      @another = Factory(:topic_with_author)
     end
     
-    assert_equal 1, voter.score
-    assert_equal 2, t.author.score
-    assert_equal 1, t.score
+    should "perform between a user and a topic" do
+      voter = @voter
+      t = @topic
     
-    assert_not_nil voter.voted_items.index(t)
-    assert_not_nil t.voted_users.index(voter)
+      assert_equal 1, voter.score
+      assert_equal 1, t.author.score
+      assert_equal 0, t.score
     
-    # Author cannot vote himself
-    assert_raise RuntimeError do
-      Vote.make(t.author, t, 1)
+      assert_nothing_raised do
+        Vote.make(voter, t, 1)
+      end
+    
+      assert_equal 1, voter.score
+      assert_equal 2, t.author.score
+      assert_equal 1, t.score
+    
+      assert_not_nil voter.voted_items.index(t)
+      assert_not_nil t.voted_users.index(voter)
+    
+      # Author cannot vote himself
+      assert_raise RuntimeError do
+        Vote.make(t.author, t, 1)
+      end
+    
+      # Transaction will rollback
+      assert_equal 2, t.author.score
+      assert_equal 1, t.score
     end
-    
-    # Transaction will rollback
-    assert_equal 2, t.author.score
-    assert_equal 1, t.score
-  end
   
-  test "Test negative vote" do
-    voter = Factory(:user)
-    t = Factory(:topic_with_author)
+    should "be negative" do
+      voter = @voter
+      t = @topic
     
-    assert_nothing_raised do
-      Vote.make(voter, t, -1)
+      assert_nothing_raised do
+        Vote.make(voter, t, -1)
+      end
+    
+      assert_equal 0, voter.score
+      assert_equal 0, t.author.score
+      assert_equal -1, t.score
+    
+      assert_not_nil voter.voted_items.index(t)
+      assert_not_nil t.voted_users.index(voter)
     end
-    
-    assert_equal 0, voter.score
-    assert_equal 0, t.author.score
-    assert_equal -1, t.score
-    
-    assert_not_nil voter.voted_items.index(t)
-    assert_not_nil t.voted_users.index(voter)
-  end
   
-  test "Test invalid amount vote" do
-    voter = Factory(:user)
-    t1 = Factory(:topic_with_author)
-    t2 = Factory(:topic_with_author)  
+    should "refuse invalid amount" do
+      voter = @voter
+      t1 = @topic
+      t2 = @another
     
-    Vote.make(voter, t1, -1)
+      Vote.make(voter, t1, -1)
     
-    assert_raise RuntimeError do
-      Vote.make(voter, t2, -1)
+      assert_raise RuntimeError do
+        Vote.make(voter, t2, -1)
+      end
     end
-  end
   
-  test "Test duplicate vote" do
-    voter = Factory(:user)
-    t1 = Factory(:topic_with_author)
+    should "refuse duplicate" do
+      voter = @voter
+      t1 = @topic
 
-    assert_nothing_raised do
-      Vote.make(voter, t1, 1)
-    end
+      assert_nothing_raised do
+        Vote.make(voter, t1, 1)
+      end
     
-    vote =Vote.make(voter, t1, 1)
-    assert vote.errors.any?
+      vote =Vote.make(voter, t1, 1)
+      assert vote.errors.any?
+    end
   end
 end
