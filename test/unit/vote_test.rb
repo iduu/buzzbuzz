@@ -23,7 +23,7 @@ class VoteTest < ActiveSupport::TestCase
       Vote.make(voter, t, 1)
     end
     
-    assert_equal 0, voter.score
+    assert_equal 1, voter.score
     assert_equal 2, t.author.score
     assert_equal 1, t.score
     
@@ -61,14 +61,22 @@ class VoteTest < ActiveSupport::TestCase
     t1 = Factory(:topic_with_author)
     t2 = Factory(:topic_with_author)  
     
-    Vote.make(voter, t1, 1)
-    
-    assert_raise RuntimeError do
-      Vote.make(voter, t2, 1)
-    end
+    Vote.make(voter, t1, -1)
     
     assert_raise RuntimeError do
       Vote.make(voter, t2, -1)
     end
+  end
+  
+  test "Test duplicate vote" do
+    voter = Factory(:user)
+    t1 = Factory(:topic_with_author)
+
+    assert_nothing_raised do
+      Vote.make(voter, t1, 1)
+    end
+    
+    vote =Vote.make(voter, t1, 1)
+    assert vote.errors.any?
   end
 end
