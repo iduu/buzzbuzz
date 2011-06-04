@@ -17,15 +17,11 @@ class Vote < ActiveRecord::Base
       if item.author == user
         raise "user cannot vote for his submits"
       end
-      
-      if vote < 0
-        if user.score < vote.abs
-          raise "user doesn't have enough score to vote negatively"
-        else
-          user.score -= vote.abs
-        end
+
+      if vote != 1 && vote != -1
+        raise "user's vote amount is not valid"
       end
-      
+
       item.score += vote
       item.author.score += vote
     end

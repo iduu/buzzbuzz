@@ -54,7 +54,7 @@ class VoteTest < ActiveSupport::TestCase
         Vote.make(voter, t, -1)
       end
     
-      assert_equal 0, voter.score
+      assert_equal 1, voter.score
       assert_equal 0, t.author.score
       assert_equal -1, t.score
     
@@ -67,10 +67,8 @@ class VoteTest < ActiveSupport::TestCase
       t1 = @topic
       t2 = @another
     
-      Vote.make(voter, t1, -1)
-    
       assert_raise RuntimeError do
-        Vote.make(voter, t2, -1)
+        Vote.make(voter, t2, -10)
       end
     end
   
