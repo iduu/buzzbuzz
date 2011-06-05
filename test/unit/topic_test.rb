@@ -15,9 +15,6 @@ class TopicTest < ActiveSupport::TestCase
     should "be in its author's submit" do
       assert_not_nil @user.submits.index(@topic) # must exist in author's submits
       assert_equal @user, @topic.author # author must be user
-    
-      assert_not_nil @user.submits.index(@comment)
-      assert_equal @user, @comment.author
     end
   
     should "be the parent of its comment" do

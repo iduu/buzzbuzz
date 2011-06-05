@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   #relation
-  has_many :submits, :class_name => 'Item', :foreign_key => 'author_id'
+  has_many :submits, :class_name => 'Topic', :foreign_key => 'author_id'
+  has_many :comments, :class_name => 'Comment', :foreign_key => 'author_id'
   
   has_many :votes
   has_many :voted_items, :through => :votes, :source => :item
