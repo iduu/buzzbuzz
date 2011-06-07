@@ -1,0 +1,34 @@
+<!--a feed-->
+<div id="feed" class="buzz_feed">
+<!-- corners -->
+	<div class="round_10_tl corner_tl"></div>
+	<div class="round_10_tr corner_tr"></div>
+	<div class="round_10_bl corner_bl"></div>
+	<div class="round_10_br corner_br"></div>
+	<!-- control bar-->
+	<div id="buzz_control" class="buzz_control rate_fav">
+		
+		
+		<a class="btn_up" href="#"></a>
+		<p id="buzz_rate" class="buzz_rate"><%= comment.score %></p>
+		<a class="btn_down" href="#"></a>
+
+	</div>
+
+	<!-- feed content -->
+	<div id="buzz_content_holder" class="buzz_content_holder">
+		</br>
+
+    <%= link_to comment.author.username, "", :class => :buzz_author, :id => :author %>
+    
+    <%= t(:post_at) %>
+		<span id="time" class="buzz_time"><%= time_ago_in_words comment.created_at %></span>
+		<%= t(:ago) %>
+
+		<p class="buzz_content"><%= comment.text %></p>
+
+	</div>
+
+
+</div>
+<!--end of a feed-->

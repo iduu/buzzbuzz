@@ -1,0 +1,39 @@
+<div id="main" class="">
+
+	<!-- feed-list -->
+	<div id="feed_list_container" class="viewfix" style="width:756px">
+		<div class="round_15_tl corner_tl"></div>				
+		<div class="round_15_tr corner_tr"></div>
+		<div class="round_15_bl corner_bl"></div>
+		<div class="round_15_br corner_br"></div>
+		<div id="feed_list">
+
+      <%= render @item %>
+      
+      <!-- comment tree-->
+      <% render_tree @item do |result, level| %>
+        <div class="children" style="margin-left:<%= level * 50 %>px">
+        <%= result %>
+        </div>
+      <% end %>
+      <!-- end of comment tree-->
+		</div>
+	</div>
+	<!--end of feed list-->
+
+
+</div>
+
+<!-- side bar -->
+<div id="side_bar" style="width:176px">
+	<ul class="side_bar_clearfix">
+		<li id="btn_buzz" ><%= link_to "", new_topic_path, :class => :btn_buzz_short %></li>
+		<li id="btn_main" ><%= link_to "", new_topic_path, :class => :btn_main_short %></li>
+	</ul>
+
+</div>
+
+<!-- footer -->
+<div id="footer" class="clearfix">
+	<div id="legal_container">&trade; &copy;2011 Wengweng Team. All rights reserved.</div>
+</div>

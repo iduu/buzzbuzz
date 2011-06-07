@@ -12,7 +12,7 @@
   <div id="inner_wrap">
     <div id="header">
       <div id="logo" class="">
-				<a href="">
+				<a href="/">
 					<img src="/images/logo_s.png" alt="wengweng">
 				</a>
 			</div>
@@ -44,7 +44,9 @@
     <!--cap-->
 		<div id="content_cap" class="clearfix"></div>
 		
-		<%= yield %>
+		<div id="content_holder" class="clearfix">
+      <%= yield %>
+    </div>
   </div>
 </div>
 

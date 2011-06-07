@@ -1,151 +1,108 @@
-<div id="content_holder" class="clearfix">
-	<div id="intro">
-		<h1><%= t('.intro.title') %></h1>
-		<p><%= t('.intro.detail')%><a href=""><%= t('.intro.link')%></a></p>
-		
+<div id="intro">
+	<h1><%= t('.intro.title') %></h1>
+	<p><%= t('.intro.detail')%><a href=""><%= t('.intro.link')%></a></p>
+	
+</div>
+
+
+<div id="main" class="">
+	
+	<!-- tab_bar -->
+	<div id="tab_bar" class="clearfix">
+		<ul id="tab_list">
+			<li class="selected">
+				<div class="tab_selected_tl corner_tl"></div>
+				<div class="tab_selected_tr corner_tr"></div>								
+				最好的
+			</li>
+			<li>
+				<div class="tab_unselected_tl corner_tl"></div>
+				<div class="tab_unselected_tr corner_tr"></div>								
+				随性的
+			</li>
+			<li>
+				<div class="tab_unselected_tl corner_tl"></div>
+				<div class="tab_unselected_tr corner_tr"></div>								
+				最烂的
+			</li>
+		</ul>
 	</div>
 
-
-	<div id="main" class="">
-		
-		<!-- tab_bar -->
-		<div id="tab_bar" class="clearfix">
-			<ul id="tab_list">
-				<li class="selected">
-					<div class="tab_selected_tl corner_tl"></div>
-					<div class="tab_selected_tr corner_tr"></div>								
-					最好的
-				</li>
-				<li>
-					<div class="tab_unselected_tl corner_tl"></div>
-					<div class="tab_unselected_tr corner_tr"></div>								
-					随性的
-				</li>
-				<li>
-					<div class="tab_unselected_tl corner_tl"></div>
-					<div class="tab_unselected_tr corner_tr"></div>								
-					最烂的
-				</li>
-			</ul>
+	<!-- feed-list -->
+	<div id="feed_list_container" class="clearfix">
+		<div class="round_15_tr corner_tr"></div>
+		<div class="round_15_bl corner_bl"></div>
+		<div class="round_15_br corner_br"></div>
+		<div id="feed_list">
+		  
+		  <% @best.each do |topic| %>
+		    <%= render(topic) %>
+      <% end %>
 		</div>
+	</div>
+	<!--end of feed list-->
 
-		<!-- feed-list -->
-		<div id="feed_list_container" class="clearfix">
+</div>
+
+<!-- side bar -->
+<div id="side_bar">
+	<ul class="side_bar_clearfix">
+		<li id="btn_buzz" ><%= link_to "", new_topic_path, :class => :btn_buzz %></li>
+		<li id="btn_yell" ><%= link_to "", new_topic_path, :class => :btn_yell %></li>
+	</ul>
+
+	<div id="ad_container">
+		<div id="ad_title" class="ad_title">
+			<p></p>
+		</div>
+		<div id="ad_content_container" class="ad_content_container">广告内容
+		</div>
+	</div>
+
+	
+	<div id="recent_comments_container">
+		<div id="rc_title" class="rc_title">
+			
+		</div>
+		<div id="rc_content_container" class="rc_content_container">
+			<div class="round_15_tl corner_tl"></div>
 			<div class="round_15_tr corner_tr"></div>
 			<div class="round_15_bl corner_bl"></div>
-			<div class="round_15_br corner_br"></div>
-			<div id="feed_list">
-			  
-			  <% @best.each do |item| %>
-				<!--a feed-->
-				<div id="feed" class="buzz_feed">
-				<!-- corners -->
+			<div class="round_15_br corner_br"></div>			
+			<div id="rc_content">
+				<div id="rc_feed" class="rc_feed">
 					<div class="round_10_tl corner_tl"></div>
 					<div class="round_10_tr corner_tr"></div>
 					<div class="round_10_bl corner_bl"></div>
 					<div class="round_10_br corner_br"></div>
-					<!-- control bar-->
-					<div id="buzz_control" class="buzz_control rate_fav">
-						
-						
-						<a class="btn_up" href="#"></a>
-						<p id="buzz_rate" class="buzz_rate"><%= item.score%></p>
-						<a class="btn_down" href="#"></a>
-
-					</div>
-
-					<!-- feed content -->
-					<div id="buzz_content_holder" class="buzz_content_holder">
-						<a id="title" class="buzz_title"><%= item.title %></a>
-
-						</br>
-
-						<a id="author" class="buzz_author"><%= item.author.username %></a>
-
-            <%=t('.post_at')%>
-						<span id="time" class="buzz_time"><%= time_ago_in_words(item.created_at) %></span>
-						<%=t('.ago')%>
-
-						<p class="buzz_content"><%= item.text %></p>
-
-					</div>
-
-
-
-					<div id="buzz_comment" class="buzz_comment">
-						嗡(<a href=""><%= item.children.count %></a>)
-					</div>
-
-				</div>
-				<!--end of a feed-->
-        <% end %>
-			</div>
-		</div>
-		<!--end of feed list-->
-
-	</div>
-
-	<!-- side bar -->
-	<div id="side_bar">
-		<ul class="side_bar_clearfix">
-			<li id="btn_buzz" ><a class="btn_buzz" href=""></a></li>
-			<li id="btn_yell" ><a class="btn_yell" href=""></a></li>
-		</ul>
-
-		<div id="ad_container">
-			<div id="ad_title" class="ad_title">
-				<p></p>
-			</div>
-			<div id="ad_content_container" class="ad_content_container">广告内容
-			</div>
-		</div>
-
-		
-		<div id="recent_comments_container">
-			<div id="rc_title" class="rc_title">
-				
-			</div>
-			<div id="rc_content_container" class="rc_content_container">
-				<div class="round_15_tl corner_tl"></div>
-				<div class="round_15_tr corner_tr"></div>
-				<div class="round_15_bl corner_bl"></div>
-				<div class="round_15_br corner_br"></div>			
-				<div id="rc_content">
-					<div id="rc_feed" class="rc_feed">
-						<div class="round_10_tl corner_tl"></div>
-						<div class="round_10_tr corner_tr"></div>
-						<div class="round_10_bl corner_bl"></div>
-						<div class="round_10_br corner_br"></div>
-						<a>Absolutely. And the fact that he is merging onto another highway clinches it. it lends an air of mystery and exclusivity. why can't i take that road...where does it go?</a>
-					</div>
-
-					<div id="rc_feed" class="rc_feed">
-						<div class="round_10_tl corner_tl"></div>
-						<div class="round_10_tr corner_tr"></div>
-						<div class="round_10_bl corner_bl"></div>
-						<div class="round_10_br corner_br"></div>
-						<a>Absolutely. And the fact that he is merging onto another highway clinches it. it lends an air of mystery and exclusivity. why can't i take that road...where does it go?</a>
-					</div>
-
-					<div id="rc_feed" class="rc_feed">
-						<div class="round_10_tl corner_tl"></div>
-						<div class="round_10_tr corner_tr"></div>
-						<div class="round_10_bl corner_bl"></div>
-						<div class="round_10_br corner_br"></div>
-						<a>Absolutely. And the fact that he is merging onto another highway clinches it. it lends an air of mystery and exclusivity. why can't i take that road...where does it go?</a>
-					</div>
+					<a>Absolutely. And the fact that he is merging onto another highway clinches it. it lends an air of mystery and exclusivity. why can't i take that road...where does it go?</a>
 				</div>
 
-				
+				<div id="rc_feed" class="rc_feed">
+					<div class="round_10_tl corner_tl"></div>
+					<div class="round_10_tr corner_tr"></div>
+					<div class="round_10_bl corner_bl"></div>
+					<div class="round_10_br corner_br"></div>
+					<a>Absolutely. And the fact that he is merging onto another highway clinches it. it lends an air of mystery and exclusivity. why can't i take that road...where does it go?</a>
+				</div>
+
+				<div id="rc_feed" class="rc_feed">
+					<div class="round_10_tl corner_tl"></div>
+					<div class="round_10_tr corner_tr"></div>
+					<div class="round_10_bl corner_bl"></div>
+					<div class="round_10_br corner_br"></div>
+					<a>Absolutely. And the fact that he is merging onto another highway clinches it. it lends an air of mystery and exclusivity. why can't i take that road...where does it go?</a>
+				</div>
 			</div>
+
+			
 		</div>
-
-		
-
 	</div>
 
-	<div id="footer" class="clearfix">
-		<div id="legal_container">&trade; &copy;2011 Wengweng Team. All rights reserved.</div>
-	</div>
+	
 
+</div>
+
+<div id="footer" class="clearfix">
+	<div id="legal_container">&trade; &copy;2011 Wengweng Team. All rights reserved.</div>
 </div>
