@@ -12,8 +12,6 @@ class Vote < ActiveRecord::Base
   def self.make(user, item, vote)
     v = nil
     Vote.transaction do
-      v = Vote.create user:user, item:item, vote:vote
-      
       if item.author == user
         raise "user cannot vote for his submits"
       end
@@ -24,6 +22,11 @@ class Vote < ActiveRecord::Base
 
       item.score += vote
       item.author.score += vote
+      
+      item.save!
+      item.author.save!
+      
+      v = Vote.create user:user, item:item, vote:vote
     end
     v
   end

@@ -8,7 +8,46 @@
 </head>
 <body>
 
-<%= yield %>
+<div id="outer_wrap">
+  <div id="inner_wrap">
+    <div id="header">
+      <div id="logo" class="">
+				<a href="">
+					<img src="/images/logo_s.png" alt="wengweng">
+				</a>
+			</div>
+			
+			<div id="navigator" class="">
+				<div id="cap_left" class=""></div>
+				
+				
+
+				<div id="search_bar">
+						<button id="btn_search" class="" type="submit"></button>
+						<input class="input_tip" type="text" value="" name="q" autocomplete="off" >
+								
+				</div>
+
+				<ul id="nav_list">
+					<li><a href="#">有问题</a></li>
+					<li><a href="#">试手气</a></li>
+					<li><a href="#">回首页</a></li>
+				</ul>
+				
+				<div id="account" class="">
+					<a href="">我是老杜</a>
+				</div>
+
+			</div>
+			
+    </div>
+    <!--cap-->
+		<div id="content_cap" class="clearfix"></div>
+		
+		<%= yield %>
+  </div>
+</div>
 
 </body>
 </html>
+  

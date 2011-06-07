@@ -22,11 +22,11 @@ class Item < ActiveRecord::Base
     sort_block = nil
     case type
     when :best
-      sort_block = lambda { |x| (x.score - 1) / ((now - x.created_at) ** 1.5) }
+      sort_block = lambda { |x| - x.score / ((now - x.created_at) ** 1.5) }
     when :recent
       sort_block = lambda { |x| - x.created_at.to_i }
     when :worst
-      sort_block = lambda { |x| - (x.score - 1) / ((now - x.created_at) ** 1.5) }
+      sort_block = lambda { |x| x.score / ((now - x.created_at) ** 1.5) }
     else
       raise "illegal sorting type: #{type}"
     end

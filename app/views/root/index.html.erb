@@ -1,0 +1,90 @@
+<div id="content_holder" class="clearfix">
+	<div id="intro">
+		<h1>欢迎来这里，这里有点吵，但也不错不是吗？</h1>
+		<p>嗡嗡是一个吵闹的地方，说你想说的，关于八卦关于趣事关于新闻关于爱情，甚至只有个一个表情，只要你想被听到，那就尽情的说嗡，没人封得住你不是吗？<a href="">嗡一声吧</a></p>
+		
+	</div>
+
+
+	<div id="main" class="">
+		
+		<!-- tab_bar -->
+		<div id="tab_bar" class="clearfix">
+			<ul id="tab_list">
+				<li class="selected">
+					<div class="tab_selected_tl corner_tl"></div>
+					<div class="tab_selected_tr corner_tr"></div>								
+					最好的
+				</li>
+				<li>
+					<div class="tab_unselected_tl corner_tl"></div>
+					<div class="tab_unselected_tr corner_tr"></div>								
+					随性的
+				</li>
+				<li>
+					<div class="tab_unselected_tl corner_tl"></div>
+					<div class="tab_unselected_tr corner_tr"></div>								
+					最烂的
+				</li>
+			</ul>
+		</div>
+
+		<!-- feed-list -->
+		<div id="feed_list_container" class="clearfix">
+			<div class="round_15_tr corner_tr"></div>
+			<div class="round_15_bl corner_bl"></div>
+			<div class="round_15_br corner_br"></div>
+			<div id="feed_list">
+			  
+			  <% @best.each do |item| %>
+				<!--a feed-->
+				<div id="feed" class="buzz_feed">
+				<!-- corners -->
+					<div class="round_10_tl corner_tl"></div>
+					<div class="round_10_tr corner_tr"></div>
+					<div class="round_10_bl corner_bl"></div>
+					<div class="round_10_br corner_br"></div>
+					<!-- control bar-->
+					<div id="buzz_control" class="buzz_control rate_fav">
+						
+						
+						<a class="btn_up" href="#"></a>
+						<p id="buzz_rate" class="buzz_rate"><%= item.score%></p>
+						<a class="btn_down" href="#"></a>
+
+					</div>
+
+					<!-- feed content -->
+					<div id="buzz_content_holder" class="buzz_content_holder">
+						<a id="title" class="buzz_title"><%= item.title %></a>
+
+						</br>
+
+						<a id="author" class="buzz_author"><%= item.author.username %></a>
+
+						<span id="time" class="buzz_time"><%= ((Time.now - item.created_at) / 60).floor %>分钟前</span>
+
+						<p class="buzz_content"><%= item.text %></p>
+
+					</div>
+
+
+
+					<div id="buzz_comment" class="buzz_comment">
+						嗡(<a href=""><%= item.children.count %></a>)
+					</div>
+
+				</div>
+				<!--end of a feed-->
+        <% end %>
+			</div>
+		</div>
+		<!--end of feed list-->
+
+	</div>
+
+	<div id="footer" class="clearfix">
+		<div id="legal_container">&trade; &copy;2011 Wengweng Team. All rights reserved.</div>
+	</div>
+
+</div>
