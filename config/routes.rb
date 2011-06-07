@@ -4,6 +4,7 @@ Buzzbuzz::Application.routes.draw do
   resources :topics
   resources :comments
   resources :items
+  resources :users
   
   match '/best' => 'root#best'
   match '/recent' => 'root#recent'

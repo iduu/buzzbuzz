@@ -31,11 +31,21 @@
 				<ul id="nav_list">
 					<li><a href="#">有问题</a></li>
 					<li><a href="#">试手气</a></li>
-					<li><a href="#">回首页</a></li>
+					<li>
+					<% if user_signed_in? %>
+				    <%= link_to "登出", destroy_user_session_path %></li>
+				  <% else %>
+				    <%= link_to "登陆", new_user_session_path %>
+				  <% end %>
+				  </li>
 				</ul>
 				
 				<div id="account" class="">
-					<a href="">我是老杜</a>
+				  <% if user_signed_in? %>
+				    <%= link_to "我是 " + current_user.username, user_path(current_user)%>
+					<% else %>
+					  <%= link_to "来注册下", new_user_registration_path %>
+					<% end %>
 				</div>
 
 			</div>
