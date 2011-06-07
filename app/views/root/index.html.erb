@@ -1,7 +1,7 @@
 <div id="content_holder" class="clearfix">
 	<div id="intro">
-		<h1>欢迎来这里，这里有点吵，但也不错不是吗？</h1>
-		<p>嗡嗡是一个吵闹的地方，说你想说的，关于八卦关于趣事关于新闻关于爱情，甚至只有个一个表情，只要你想被听到，那就尽情的说嗡，没人封得住你不是吗？<a href="">嗡一声吧</a></p>
+		<h1><%= t('.intro.title') %></h1>
+		<p><%= t('.intro.detail')%><a href=""><%= t('.intro.link')%></a></p>
 		
 	</div>
 
@@ -62,7 +62,9 @@
 
 						<a id="author" class="buzz_author"><%= item.author.username %></a>
 
-						<span id="time" class="buzz_time"><%= ((Time.now - item.created_at) / 60).floor %>分钟前</span>
+            <%=t('.post_at')%>
+						<span id="time" class="buzz_time"><%= time_ago_in_words(item.created_at) %></span>
+						<%=t('.ago')%>
 
 						<p class="buzz_content"><%= item.text %></p>
 
@@ -80,6 +82,65 @@
 			</div>
 		</div>
 		<!--end of feed list-->
+
+	</div>
+
+	<!-- side bar -->
+	<div id="side_bar">
+		<ul class="side_bar_clearfix">
+			<li id="btn_buzz" ><a class="btn_buzz" href=""></a></li>
+			<li id="btn_yell" ><a class="btn_yell" href=""></a></li>
+		</ul>
+
+		<div id="ad_container">
+			<div id="ad_title" class="ad_title">
+				<p></p>
+			</div>
+			<div id="ad_content_container" class="ad_content_container">广告内容
+			</div>
+		</div>
+
+		
+		<div id="recent_comments_container">
+			<div id="rc_title" class="rc_title">
+				
+			</div>
+			<div id="rc_content_container" class="rc_content_container">
+				<div class="round_15_tl corner_tl"></div>
+				<div class="round_15_tr corner_tr"></div>
+				<div class="round_15_bl corner_bl"></div>
+				<div class="round_15_br corner_br"></div>			
+				<div id="rc_content">
+					<div id="rc_feed" class="rc_feed">
+						<div class="round_10_tl corner_tl"></div>
+						<div class="round_10_tr corner_tr"></div>
+						<div class="round_10_bl corner_bl"></div>
+						<div class="round_10_br corner_br"></div>
+						<a>Absolutely. And the fact that he is merging onto another highway clinches it. it lends an air of mystery and exclusivity. why can't i take that road...where does it go?</a>
+					</div>
+
+					<div id="rc_feed" class="rc_feed">
+						<div class="round_10_tl corner_tl"></div>
+						<div class="round_10_tr corner_tr"></div>
+						<div class="round_10_bl corner_bl"></div>
+						<div class="round_10_br corner_br"></div>
+						<a>Absolutely. And the fact that he is merging onto another highway clinches it. it lends an air of mystery and exclusivity. why can't i take that road...where does it go?</a>
+					</div>
+
+					<div id="rc_feed" class="rc_feed">
+						<div class="round_10_tl corner_tl"></div>
+						<div class="round_10_tr corner_tr"></div>
+						<div class="round_10_bl corner_bl"></div>
+						<div class="round_10_br corner_br"></div>
+						<a>Absolutely. And the fact that he is merging onto another highway clinches it. it lends an air of mystery and exclusivity. why can't i take that road...where does it go?</a>
+					</div>
+				</div>
+
+				
+			</div>
+		</div>
+
+		
 
 	</div>
 
