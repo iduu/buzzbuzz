@@ -3,7 +3,11 @@ Buzzbuzz::Application.routes.draw do
   
   resources :topics
   resources :comments
-  resources :items
+  
+  resources :items do |route|
+    post 'vote'
+  end
+  
   resources :users
   
   match '/best' => 'root#best'

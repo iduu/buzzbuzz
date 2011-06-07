@@ -19,14 +19,15 @@ class Vote < ActiveRecord::Base
       if vote != 1 && vote != -1
         raise "user's vote amount is not valid"
       end
-
+      
+      v = Vote.create user:user, item:item, vote:vote
+      v.save!
+      
       item.score += vote
       item.author.score += vote
       
       item.save!
       item.author.save!
-      
-      v = Vote.create user:user, item:item, vote:vote
     end
     v
   end
