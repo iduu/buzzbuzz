@@ -1,3 +1,5 @@
+<% javascript :defaults, 'endless_page' %>
+<div id="page_type" style="display:none"><%= @type %></div>
 <div id="intro">
 	<h1><%= t('.intro.title') %></h1>
 	<p><%= t('.intro.detail')%><a href=""><%= t('.intro.link')%></a></p>
@@ -10,20 +12,20 @@
 	<!-- tab_bar -->
 	<div id="tab_bar" class="clearfix">
 		<ul id="tab_list">
-			<li class="selected">
-				<div class="tab_selected_tl corner_tl"></div>
-				<div class="tab_selected_tr corner_tr"></div>								
-				最好的
+			<li>
+				<div class="tab_unselected_tl corner_tl"></div>
+				<div class="tab_unselected_tr corner_tr"></div>
+				<a href="/best">最好的</a>
+			</li>
+			<li>
+				<div class="tab_unselected_tl corner_tl"></div>
+				<div class="tab_unselected_tr corner_tr"></div>
+				<a href="/recent">最近的</a>
 			</li>
 			<li>
 				<div class="tab_unselected_tl corner_tl"></div>
 				<div class="tab_unselected_tr corner_tr"></div>								
-				随性的
-			</li>
-			<li>
-				<div class="tab_unselected_tl corner_tl"></div>
-				<div class="tab_unselected_tr corner_tr"></div>								
-				最烂的
+				<a href="worst">最烂的</a>
 			</li>
 		</ul>
 	</div>
@@ -35,10 +37,11 @@
 		<div class="round_15_br corner_br"></div>
 		<div id="feed_list">
 		  
-		  <% @best.each do |topic| %>
-		    <%= render(topic) %>
-      <% end %>
+		  <%= render :partial => @topics %>
+		  
+      
 		</div>
+		<p id="loading">Loading more page results...</p>
 	</div>
 	<!--end of feed list-->
 

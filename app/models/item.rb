@@ -15,10 +15,11 @@ class Item < ActiveRecord::Base
   
   # Get content for type, with page & page size
   def self.content_for(type, options = {})
+    type = type || :best
     page = options[:page] || 0
-    size = options[:size] || 30
+    size = options[:per_page] || 30
     now = Time.now
-    
+
     sort_block = nil
     case type
     when :best
@@ -34,7 +35,10 @@ class Item < ActiveRecord::Base
     content = all.sort_by do |x|
       sort_block.call x
     end
-    
-    content[page * size..size]
+
+    result = Page.new(content[page * size..(page + 1 ) * size - 1])
+    result.current_page = page
+    result.total_pages = (content.count / size).ceil
+    result
   end
 end
