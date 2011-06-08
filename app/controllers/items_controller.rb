@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
       # TODO
     end
     respond_to do |format|
-      format.html { redirect_to @item, :notice => "vote success" }
+      format.html { redirect_to item_path(@item), :notice => "vote success" }
       format.js
     end
   end
