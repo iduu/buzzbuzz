@@ -18,8 +18,17 @@ class Item < ActiveRecord::Base
     type = type || :best
     page = options[:page] || 0
     size = options[:per_page] || 30
-    now = Time.now
 
+    content = sort(type, all())
+    
+    result = Page.new(content[page * size..(page + 1 ) * size - 1])
+    result.current_page = page
+    result.total_pages = (content.count / size).ceil
+    result
+  end
+  
+  def self.sort(type, content)
+    now = Time.now
     sort_block = nil
     case type
     when :best
@@ -32,13 +41,8 @@ class Item < ActiveRecord::Base
       raise "illegal sorting type: #{type}"
     end
     
-    content = all.sort_by do |x|
+    content = content.sort_by do |x|
       sort_block.call x
     end
-
-    result = Page.new(content[page * size..(page + 1 ) * size - 1])
-    result.current_page = page
-    result.total_pages = (content.count / size).ceil
-    result
   end
 end

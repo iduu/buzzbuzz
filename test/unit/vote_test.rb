@@ -80,8 +80,9 @@ class VoteTest < ActiveSupport::TestCase
         Vote.make(voter, t1, 1)
       end
     
-      vote =Vote.make(voter, t1, 1)
-      assert vote.errors.any?
+      assert_raise ActiveRecord::RecordInvalid do
+        vote =Vote.make(voter, t1, 1)
+      end
     end
   end
 end
