@@ -2,8 +2,7 @@
 <div id="page_type" style="display:none"><%= @type %></div>
 <div id="intro">
 	<h1><%= t('.intro.title') %></h1>
-	<p><%= t('.intro.detail')%><a href=""><%= t('.intro.link')%></a></p>
-	
+	<p><%= t('.intro.detail')%><%= link_to t('.intro.link'), new_topic_path %></p>
 </div>
 
 

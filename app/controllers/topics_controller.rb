@@ -1,4 +1,6 @@
 class TopicsController < ApplicationController
+  before_filter :authenticate_user!
+  
   # GET /topics/new
   # GET /topics/new.xml
   def new
@@ -19,6 +21,7 @@ class TopicsController < ApplicationController
   # POST /topics.xml
   def create
     @topic = Topic.new(params[:topic])
+    @topic.author = current_user
 
     respond_to do |format|
       if @topic.save

@@ -1,25 +1,5 @@
 class CommentsController < ApplicationController
-  # GET /comments
-  # GET /comments.xml
-  def index
-    @comments = Comment.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @comments }
-    end
-  end
-
-  # GET /comments/1
-  # GET /comments/1.xml
-  def show
-    @comment = Comment.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @comment }
-    end
-  end
+  before_filter :authenticate_user!
 
   # GET /comments/new
   # GET /comments/new.xml
