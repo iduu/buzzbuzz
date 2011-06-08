@@ -9,9 +9,9 @@
 	<div id="buzz_control" class="buzz_control rate_fav">
 		
 		
-		<%= button_to "", item_vote_path(topic, {:score => "1"}), :method => :post, :class => :btn_up %>
+		<%= link_to "", item_vote_path(topic, {:score => "1"}), :method => :post, :class => :btn_up%>
 		<p id="buzz_rate" class="buzz_rate"><%= topic.score %></p>
-		<%= button_to "", item_vote_path(topic, {:score => "-1"}), :method => :post, :class => :btn_down %>
+		<%= link_to "", item_vote_path(topic, {:score => "-1"}), :method => :post, :class => :btn_down %>
 
 	</div>
 
