@@ -313,15 +313,7 @@ div.corner_br {
 .buzz_content_holder{
 	float:left;
 	position:relative;
-	width:100%;
-	padding-left:20px;
-	padding-right:0px;
-}
-
-.buzz_content_holder{
-	float:left;
-	position:relative;
-	width:510px;
+	width:auto;
 	padding-left:20px;
 	padding-right:0px;
 }
