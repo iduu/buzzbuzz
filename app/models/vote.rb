@@ -20,7 +20,7 @@ class Vote < ActiveRecord::Base
         raise "user's vote amount is not valid"
       end
       
-      v = Vote.create user:user, item:item, vote:vote
+      v = Vote.create :user => user, :item => item, :vote => vote
       v.save!
       
       item.score += vote
