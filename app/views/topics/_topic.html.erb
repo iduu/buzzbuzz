@@ -31,10 +31,9 @@
 
 	</div>
 
-
-
 	<div id="buzz_comment" class="buzz_comment">
-		嗡(<%= link_to tree_count(topic), item_path(topic)%>)
+	  <%= link_to "嗡", new_comment_path, :remote => :true %>
+		(<%= link_to tree_count(topic), item_path(topic)%>)
 	</div>
 
 </div>

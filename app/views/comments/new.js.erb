@@ -1,0 +1,11 @@
+$("#comment_form").dialog({
+  autoOpen: true,
+  modal: true,
+  width: 400,
+  title: 'Reply to',
+  open: function() {
+    disable_scroll()
+    $("#comment_form").html("<%= escape_javascript(render('form')) %>")
+  },
+  close: enable_scroll
+});

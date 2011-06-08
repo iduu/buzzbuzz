@@ -3,7 +3,7 @@
 
   <p><%= f.label :username %><br />
   <%= f.text_field :username, :class => :round_input %></p>
-  
+
   <p><%= f.label :email %><br />
   <%= f.email_field :email, :class => :round_input %></p>
 
@@ -12,8 +12,10 @@
 
   <p><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation, :class => :round_input %></p>
-
-  <p><%= f.submit "Sign up", :class => :btn_submit %></p>
+  
+  <div class="submit_area">
+    <p><%= f.submit "注册", :class => :btn_submit %></p>
+    <%= render :partial => "devise/shared/links" %>
+  </div>
 <% end %>
 
-<%= render :partial => "devise/shared/links" %>

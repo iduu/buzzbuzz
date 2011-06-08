@@ -7,7 +7,11 @@ cn:
       user:  
         login: "用户名或邮箱"
         password: "密码"
+        password_confirmation: "确认密码"
         remember_me: "记住我?"
+        email: "邮箱"
+        username: "用户名"
+        
         
   root:
     index:

@@ -16,6 +16,8 @@ class ItemsController < ApplicationController
     rescue
       # TODO
     end
-    redirect_to :back
+    respond_to do |format|
+      format.js
+    end
   end
 end
