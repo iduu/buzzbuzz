@@ -11,6 +11,14 @@ cn:
         remember_me: "记住我?"
         email: "邮箱"
         username: "用户名"
+      
+      item:
+        text: "牢骚"
+        
+      topic:
+        title: "标题"
+        url: "网址"
+        
         
         
   root:

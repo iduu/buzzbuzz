@@ -28,6 +28,11 @@
 		<p class="buzz_content"><%= comment.text %></p>
 
 	</div>
+	
+	<div id="buzz_comment" class="buzz_comment">
+	  <%= link_to "嗡一下", new_comment_path(:parent => comment), :remote => :true %>
+	</div>
+	
 
 
 </div>

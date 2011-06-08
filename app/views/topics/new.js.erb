@@ -1,8 +1,9 @@
 $("#post_form").dialog({
   autoOpen: true,
   modal: true,
-  width: 400,
+  width: 480,
   title: 'New buzz',
+  position: ['center', 100],
   open: function() {
     disable_scroll()
     $("#post_form").html("<%= escape_javascript(render('form')) %>")

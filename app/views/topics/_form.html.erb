@@ -10,11 +10,17 @@
       </ul>
     </div>
   <% end %>
-
-  title <%= f.text_field :title %><br />
-  url: <%= f.url_field :url %><br />
-  text: <%= f.text_area :text %><br />
-  <div class="actions">
-    <%= f.submit %>
+  
+  <p class="clearfix"><%= f.label :title %>:<br />
+  <%= f.text_field :title, :class => :post_input %></p>
+  
+  <p class="clearfix"><%= f.label :url %>:<br />
+  <%= f.url_field :url, :class => :post_input %></p>
+  
+  <p class="clearfix"><%= f.label :text %>:<br />
+  <%= f.text_area :text, :class => :post_input, :rows => 10 %></p>
+  
+  <div class="actions clearfix">
+    <%= f.submit :class => :btn_submit %>
   </div>
 <% end %>

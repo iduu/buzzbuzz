@@ -547,15 +547,11 @@ div.corner_br {
 	padding:3px 9px 3px 9px;
 }
 
-.submit_area {
+#devise_form .submit_area {
   margin:15px 0px 0 0;
 }
 
-.pw-font{
-	font-size:100px;
-}
-
-#devise_form .btn_submit {
+.btn_submit {
 	float:left;
 	color:white;
 	background-color:#3099D4;
@@ -564,6 +560,17 @@ div.corner_br {
 	width:130px;
 	height:40px;
 	font-size:24px;
-	margin: 0px 22px 0 0
+	margin: 0px 22px 0 0;
 }
 
+.post_input {
+	font-family: "Microsoft Yahei","微软雅黑",Tahoma,Arial,Helvetica,STHeiti;
+	color:#454F4D;
+	float:left;
+	border:medium none;
+	border-radius:10px;
+	font-size:18px;
+	width: 400px;
+	margin:7px 0 7px 0;
+	padding:3px 9px 3px 9px;
+}

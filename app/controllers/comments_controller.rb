@@ -19,7 +19,12 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.xml
   def create
+    parent = Item.find(params[:comment][:parent])
+    params[:comment][:parent] = nil
+    
     @comment = Comment.new(params[:comment])
+    @comment.author = current_user
+    @comment.parent = parent
 
     respond_to do |format|
       if @comment.save

@@ -32,7 +32,7 @@
 	</div>
 
 	<div id="buzz_comment" class="buzz_comment">
-	  <%= link_to "嗡", new_comment_path, :remote => :true %>
+	  <%= link_to "嗡一下", new_comment_path(:parent => topic), :remote => :true %>
 		(<%= link_to tree_count(topic), item_path(topic)%>)
 	</div>
 
