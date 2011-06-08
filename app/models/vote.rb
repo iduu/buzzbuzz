@@ -39,6 +39,10 @@ class Vote < ActiveRecord::Base
   end
   
   def no_self_vote
+    if self.item == nil || self.user == nil
+      return
+    end
+    
     if self.item.author == self.user
       self.errors.add :user, :no_self_vote
     end

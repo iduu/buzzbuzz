@@ -20,8 +20,12 @@ class Item < ActiveRecord::Base
     size = options[:per_page] || 30
 
     content = sort(type, all())
-    
-    result = Page.new(content[page * size..(page + 1 ) * size - 1])
+    part = content[page * size..(page + 1) * size - 1];
+    if part != nil
+      result = Page.new(part)
+    else
+      result = Page.new
+    end
     result.current_page = page
     result.total_page = (content.count / size).ceil
     result

@@ -37,9 +37,7 @@ class VoteTest < ActiveSupport::TestCase
       assert_not_nil t.voted_users.index(voter)
     
       # Author cannot vote himself
-      assert_raise RuntimeError do
-        Vote.make(t.author, t, 1)
-      end
+      assert Vote.make(t.author, t, 1).errors.any?
     
       # Transaction will rollback
       assert_equal 2, t.author.score
@@ -67,22 +65,16 @@ class VoteTest < ActiveSupport::TestCase
       t1 = @topic
       t2 = @another
     
-      assert_raise RuntimeError do
-        Vote.make(voter, t2, -10)
-      end
+      assert Vote.make(voter, t2, -10).errors.any?
     end
   
     should "refuse duplicate" do
       voter = @voter
       t1 = @topic
 
-      assert_nothing_raised do
-        Vote.make(voter, t1, 1)
-      end
+      assert !Vote.make(voter, t1, 1).errors.any?
     
-      assert_raise ActiveRecord::RecordInvalid do
-        vote =Vote.make(voter, t1, 1)
-      end
+      assert Vote.make(voter, t1, 1).errors.any?
     end
   end
 end
