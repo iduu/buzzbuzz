@@ -1,0 +1,12 @@
+$("#post_form").dialog({
+  autoOpen: true,
+  height: 600,
+  width: 600,
+  modal: true,
+  title: 'New buzz',
+  open: function() {
+    disable_scroll()
+    $("#post_form").html("<%= escape_javascript(render('form')) %>")
+  },
+  close: enable_scroll
+});

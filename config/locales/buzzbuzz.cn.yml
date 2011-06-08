@@ -1,7 +1,14 @@
 cn:
   post_at:  "发表于"
   ago:      "前"
-    
+
+  activerecord:
+    attributes:
+      user:  
+        login: "用户名或邮箱"
+        password: "密码"
+        remember_me: "记住我?"
+        
   root:
     index:
     

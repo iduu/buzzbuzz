@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   
   def show
     @item = Item.find(params[:id])
+    @comment = Comment.new
     respond_to do |format|
       format.html
     end

@@ -506,23 +506,23 @@ div.corner_br {
 	height:240px;
 }
 
-#login_field{
+#devise_form {
 	float:left;
 	width:250px;
 	margin-top:26px;
 }
 
-#login_field p{
+#devise_form p{
 	font-size:14px;
 	color:#404040;
 }
 
-#login_field a{
+#devise_form a{
 	font-size:16px;
 	color:#3D708D;
 }
 
-#login_field a:hover{
+#devise_form a:hover{
 	font-size:16px;
 	color:#278ABF;
 	text-decoration:underline;
@@ -534,10 +534,8 @@ div.corner_br {
 	float:left;
 }
 
-
-
-#login_field input{
-	font-family: "Microsoft Yahei","微软雅黑";
+#devise_form .round_input {
+	font-family: "Microsoft Yahei","微软雅黑",Tahoma,Arial,Helvetica,STHeiti;
 	color:#454F4D;
 	float:left;
 	border:medium none;
@@ -551,10 +549,9 @@ div.corner_br {
 
 .pw-font{
 	font-size:100px;
-	
 }
 
-.btn_login{
+.btn_submit {
 	float:left;
 	background:url("/images/btn_login.png") no-repeat scroll;
 	width:130px;

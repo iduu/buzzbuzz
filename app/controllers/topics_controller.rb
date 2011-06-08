@@ -7,8 +7,7 @@ class TopicsController < ApplicationController
     @topic = Topic.new
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @topic }
+      format.js
     end
   end
 
