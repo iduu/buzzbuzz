@@ -9,6 +9,13 @@ function checkSidebar() {
       $('#side_bar').clearQueue();
       $('#side_bar').animate({top:newTop});
     }
+    
+    if ($(window).scrollTop() > 400) {
+      $('#scroll_to_top').fadeIn();
+    }
+    else {
+      $('#scroll_to_top').fadeOut();
+    }
   });
 }
 

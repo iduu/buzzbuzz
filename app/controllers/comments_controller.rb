@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
       if @comment.save
         format.html { redirect_to(item_path(@comment.root), :notice => 'Comment was successfully created.') }
       else
-        format.html { render :action => "new" }
+        format.html { redirect_to :back }
       end
     end
   end

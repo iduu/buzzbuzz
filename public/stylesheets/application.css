@@ -129,9 +129,8 @@ li{
 
 #content_holder{
 	background-color:#FFFFFF;
-	padding:5px 15px 200px 20px;
-
-
+	height:100%;
+	padding:5px 15px 40px 20px;
 }
 
 #intro{
@@ -585,4 +584,22 @@ div.corner_br {
 	position:absolute;
 	right:-37px;
 	top:-48px;
+}
+
+#scroll_to_top {
+	display: block;
+	background:url("/images/btn_scroll_to_top.png");
+	bottom: 20px;
+	right: 20px;
+  height: 55px;
+	width: 55px;
+  position: fixed;
+  text-indent: -9999px;
+}
+
+#loading {
+  background:url("/images/loading.png") no-repeat scroll;
+  width:620px;
+  height:55px;
+  margin-left:200px;
 }

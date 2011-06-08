@@ -27,7 +27,7 @@ class TopicsController < ApplicationController
         format.html { redirect_to(item_path(@topic), :notice => 'Topic was successfully created.') }
         format.xml  { render :xml => @topic, :status => :created, :location => @topic }
       else
-        format.html { render :action => "new" }
+        format.html { redirect_to :back }
         format.xml  { render :xml => @topic.errors, :status => :unprocessable_entity }
       end
     end
