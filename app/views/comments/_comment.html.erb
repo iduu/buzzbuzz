@@ -17,10 +17,13 @@
 	<!-- feed content -->
 	<div id="buzz_content_holder" class="buzz_content_holder">
     <%= link_to comment.author.username, "", :class => :buzz_author, :id => :author %>
-    
     <%= t(:post_at) %>
 		<span id="time" class="buzz_time"><%= time_ago_in_words comment.created_at %></span>
 		<%= t(:ago) %>
+		|<%= link_to "链接", item_path(comment) %>
+		<% if params[:id].to_i == comment.id %>
+		|<%= link_to "父嗡嗡", item_path(comment.parent) %>
+		<% end %>
 
 		<p class="buzz_content"><%= comment.text %></p>
 

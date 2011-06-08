@@ -19,13 +19,13 @@
 	<div id="buzz_content_holder" class="buzz_content_holder">
 	  <%= link_to topic.title, topic.url, :class => :buzz_title, :id => :title %>
 
-		</br>
-
-    <%= link_to topic.author.username, "", :class => :buzz_author, :id => :author %>
+		<br />
     
+    <%= link_to topic.author.username, "", :class => :buzz_author, :id => :author %>
     <%= t(:post_at) %>
 		<span id="time" class="buzz_time"><%= time_ago_in_words topic.created_at %></span>
 		<%= t(:ago) %>
+		|<%= link_to "链接", item_path(topic) %>
 
 		<p class="buzz_content"><%= topic.text %></p>
 
