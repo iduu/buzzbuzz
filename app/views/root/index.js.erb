@@ -1,0 +1,7 @@
+$('#feed_list').append("<%= escape_javascript(render(:partial => @topics)) %>")
+if (<%= @topics.total_page %> > <%= @topics.current_page %>) {
+  checkScroll();
+} else {
+  $('#loading').hide()
+}
+

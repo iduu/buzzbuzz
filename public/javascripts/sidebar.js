@@ -1,9 +1,15 @@
 function checkSidebar() {
-  Event.observe(window, 'scroll', function(evt){
-    newTop = document.viewport.getScrollOffsets().top - 100;
-    newTop = newTop < 0? 0:newTop;
-    new Effect.Move('side_bar', {x : 0, y : newTop, mode: 'absolute'});
+  var top = 0;
+  $('#side_bar').css({position:'relative'});
+  $(window).scroll(function() {
+    newTop = $(window).scrollTop() - 30;
+    newTop = newTop > 0? newTop:0;
+    if (Math.abs(top - newTop) > 30) {
+      top = newTop;
+      $('#side_bar').clearQueue();
+      $('#side_bar').animate({top:newTop});
+    }
   });
 }
 
-document.observe('dom:loaded', checkSidebar);
+$(checkSidebar)

@@ -23,7 +23,7 @@ class Item < ActiveRecord::Base
     
     result = Page.new(content[page * size..(page + 1 ) * size - 1])
     result.current_page = page
-    result.total_pages = (content.count / size).ceil
+    result.total_page = (content.count / size).ceil
     result
   end
   
