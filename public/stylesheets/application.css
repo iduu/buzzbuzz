@@ -57,7 +57,7 @@ li{
 }
 
 #navigator{
-	background:url("/images/bg_nav.png") no-repeat scroll 0 0 #ff0000;
+	background:url("/images/bg_nav.png") no-repeat scroll 0 0;
 	width:550px;
 	height:51px;
 	float:right;
@@ -312,8 +312,9 @@ div.corner_br {
 .buzz_content_holder{
 	position:relative;
 	width:auto;
-	padding-left:60px;
+	padding-left:20px;
 	padding-right:0px;
+	margin-left:50px;
 }
 
 .rate_fav{

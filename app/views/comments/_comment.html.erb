@@ -10,7 +10,7 @@
 		
 		<%= link_to "", item_vote_path(comment, :score => "1", :format => :js), :method => :post, :class => vote_status(comment, :btn_up), :remote => :true %>
 		<p id="buzz_rate" class="buzz_rate"><%= comment.score %></p>
-		<%= link_to "", item_vote_path(comment, :score => "1", :format => :js), :method => :post, :class => vote_status(comment, :btn_down), :remote => :true %>
+		<%= link_to "", item_vote_path(comment, :score => "-1", :format => :js), :method => :post, :class => vote_status(comment, :btn_down), :remote => :true %>
 
 	</div>
 
