@@ -9,7 +9,7 @@
 		<div class="round_15_br corner_br"></div>
 		<div id="feed_list">
 
-      <%= render @item %>
+      <%= render :partial => @item %>
       
       <!-- comment tree-->
       <% render_tree @item do |result, level| %>
