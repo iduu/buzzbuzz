@@ -1,0 +1,26 @@
+<% if @vote.errors.any? %>
+  <% @notice = "" %>
+  <% @vote.errors.full_messages.each { |msg| @notice += msg } %>
+<% end %>
+
+$('#notice #notice_content').text("<%= @notice %>");
+$('#notice').dialog({
+  modal: true,
+  open: function() {
+    //$('.ui-dialog-titlebar').hide();
+    disable_scroll();
+  },
+  
+  close: function () {
+    enable_scroll();
+    var itemid = "#item<%=@item.id%>";
+    $(itemid + " #buzz_rate" ).html("<%= @item.score %>").hide().fadeIn(2000);
+    <% if !@vote.errors.any? %>
+      <% if @vote.vote == 1 %>
+        $(itemid + " .btn_up").addClass('btn_up_selected').hide().fadeIn(2000);
+      <% else %>
+        $(itemid + " .btn_down").addClass('btn_down_selected').hide().fadeIn(2000);
+      <% end %>
+    <% end %>
+  }
+});

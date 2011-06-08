@@ -45,4 +45,12 @@ class Item < ActiveRecord::Base
       sort_block.call x
     end
   end
+  
+  def root
+    ret = self
+    while ret.parent != nil
+      ret = ret.parent
+    end
+    ret
+  end
 end

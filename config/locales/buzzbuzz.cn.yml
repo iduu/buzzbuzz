@@ -1,10 +1,15 @@
 cn:
   post_at:  "发表于"
   ago:      "前"
+  
+  errors:
+    messages:
+      voted:    "已经投过了！"
+      no_self_vote:   "别自恋了！"
 
   activerecord:
     attributes:
-      user:  
+      user:
         login: "用户名或邮箱"
         password: "密码"
         password_confirmation: "确认密码"

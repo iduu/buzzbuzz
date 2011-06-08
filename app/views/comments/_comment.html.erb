@@ -1,5 +1,5 @@
 <!--a feed-->
-<div id="feed" class="buzz_feed">
+<div id="item<%=comment.id%>" class="buzz_feed">
 <!-- corners -->
 	<div class="round_10_tl corner_tl"></div>
 	<div class="round_10_tr corner_tr"></div>
@@ -8,10 +8,9 @@
 	<!-- control bar-->
 	<div id="buzz_control" class="buzz_control rate_fav">
 		
-		
-		<%= link_to "", item_vote_path(comment, {:score => "1"}), :method => :post, :class => :btn_up %>
+		<%= link_to "", item_vote_path(comment, :score => "1", :format => :js), :method => :post, :class => vote_status(comment, :btn_up), :remote => :true %>
 		<p id="buzz_rate" class="buzz_rate"><%= comment.score %></p>
-		<%= link_to "", item_vote_path(comment, {:score => "-1"}), :method => :post, :class => :btn_down %>
+		<%= link_to "", item_vote_path(comment, :score => "1", :format => :js), :method => :post, :class => vote_status(comment, :btn_down), :remote => :true %>
 
 	</div>
 

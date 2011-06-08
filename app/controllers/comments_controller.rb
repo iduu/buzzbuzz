@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to(item_path(@comment), :notice => 'Comment was successfully created.') }
+        format.html { redirect_to(item_path(@comment.root), :notice => 'Comment was successfully created.') }
       else
         format.html { render :action => "new" }
       end

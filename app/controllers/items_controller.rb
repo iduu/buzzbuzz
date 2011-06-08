@@ -10,14 +10,13 @@ class ItemsController < ApplicationController
   end
   
   def vote
+    score = params[:score].to_i
     @item = Item.find(params[:item_id])
-    begin
-      Vote.make(current_user, @item, params[:score].to_i)
-    rescue
-      # TODO
-    end
+    @notice = "vote #{score} success!"
+    
+    @vote = Vote.make(current_user, @item, score)
+    
     respond_to do |format|
-      format.html { redirect_to item_path(@item), :notice => "vote success" }
       format.js
     end
   end

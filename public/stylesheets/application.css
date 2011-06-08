@@ -378,11 +378,11 @@ div.corner_br {
 	margin:2px 0 0 12px;
 }
 
-.btn_up:hover{
+.btn_up_selected, .btn_up:hover{
 	background:url("/images/btn_up_hover.png") no-repeat scroll #FFFFFF;
 }
 
-.btn_down:hover{
+.btn_down_selected, .btn_down:hover{
 	background:url("/images/btn_down_hover.png") no-repeat scroll #FFFFFF;
 }
 
@@ -459,7 +459,7 @@ div.corner_br {
 
 .btn_buzz_short{
 	display:block;
-	background:url("/images/btn_buzz_short.png") no-repeat scroll #FF0000;
+	background:url("/images/btn_buzz_short.png") no-repeat scroll;
 	width:176px;
 	height:50px;
 	margin:0px 0 16px 0;
@@ -467,7 +467,7 @@ div.corner_br {
 
 .btn_main_short{
 	display:block;
-	background:url("/images/btn_main_short.png") no-repeat scroll #FF0000;
+	background:url("/images/btn_main_short.png") no-repeat scroll;
 	width:176px;
 	height:50px;
 	margin:0px 0 16px 0;
@@ -493,7 +493,7 @@ div.corner_br {
 
 .logo_big{
 	display:block;
-	background:url("/images/logo_big.png") no-repeat scroll #FF0000;
+	background:url("/images/logo_big.png") no-repeat scroll;
 	width:300px;
 	height:240px;
 }
@@ -565,4 +565,24 @@ div.corner_br {
 	width: 400px;
 	margin:7px 0 7px 0;
 	padding:3px 9px 3px 9px;
+}
+
+#notice {
+	background-color:#85C9EE;
+	border-radius:15px;
+	position:relative;
+	font-size:30px;
+	width:320px;
+  height:110px;
+  padding:13px 0 0 40px;
+	color:#E4F3FC;
+}
+
+.bg_logo{
+	background:url("/images/logo_s_t.png") no-repeat scroll;
+	width:125px;
+	height:125px;
+	position:absolute;
+	right:-37px;
+	top:-48px;
 }
